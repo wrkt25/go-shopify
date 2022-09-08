@@ -101,6 +101,8 @@ type Order struct {
 	TotalPriceSet         AmountSet        `json:"total_price_set,omitempty"`
 	TotalDiscountsSet     AmountSet        `json:"total_discounts_set,omitempty"`
 	SubtotalPriceSet      AmountSet        `json:"subtotal_price_set"`
+	TotalShippingPriceSet AmountSet        `json:"total_shipping_price_set"`
+	CurrentTotalDutiesSet AmountSet        `json:"current_total_duties_set"`
 	PresentmentCurrency   string           `json:"presentment_currency"`
 	TotalPrice            *decimal.Decimal `json:"total_price,omitempty"`
 	SubtotalPrice         *decimal.Decimal `json:"subtotal_price,omitempty"`
