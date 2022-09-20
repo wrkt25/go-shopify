@@ -594,6 +594,14 @@ func (c *Client) CreateAndDo(method, relPath string, data, options, resource int
 	return nil
 }
 
+func (c *Client) CreateAndDoWithHeaders(method, relPath string, data, options, resource interface{}) (http.Header, error) {
+	headers, err := c.createAndDoGetHeaders(method, relPath, data, options, resource)
+	if err != nil {
+		return nil, err
+	}
+	return headers, nil
+}
+
 // createAndDoGetHeaders creates an executes a request while returning the response headers.
 func (c *Client) createAndDoGetHeaders(method, relPath string, data, options, resource interface{}) (http.Header, error) {
 	if strings.HasPrefix(relPath, "/") {
@@ -601,13 +609,23 @@ func (c *Client) createAndDoGetHeaders(method, relPath string, data, options, re
 		relPath = strings.TrimLeft(relPath, "/")
 	}
 
-	relPath = path.Join(c.pathPrefix, relPath)
+	// actually relPath can be a full path
+	// see [Make paginated requests to the REST Admin API] https://shopify.dev/api/usage/pagination-rest
+	if !strings.HasPrefix(relPath, "https:") && !strings.HasPrefix(relPath, "http") {
+		relPath = path.Join(c.pathPrefix, relPath)
+	}
 	req, err := c.NewRequest(method, relPath, data, options)
 	if err != nil {
 		return nil, err
 	}
 
 	return c.doGetHeaders(req, resource)
+}
+
+// GetWithHeaders performs a GET request for the given path and saves the result in the
+// given resource.
+func (c *Client) GetWithHeaders(path string, resource, options interface{}) (http.Header, error) {
+	return c.CreateAndDoWithHeaders("GET", path, nil, options, resource)
 }
 
 // Get performs a GET request for the given path and saves the result in the
