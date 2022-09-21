@@ -357,6 +357,7 @@ type Transaction struct {
 	SourceName     string           `json:"source_name,omitempty"`
 	Source         string           `json:"source,omitempty"`
 	PaymentDetails *PaymentDetails  `json:"payment_details,omitempty"`
+	Receipt        interface{}      `json:"receipt,omitempty"`
 }
 
 type ClientDetails struct {
