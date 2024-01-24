@@ -206,6 +206,7 @@ type LineItem struct {
 	FulfillmentService         string                `json:"fulfillment_service,omitempty"`
 	RequiresShipping           bool                  `json:"requires_shipping,omitempty"`
 	VariantInventoryManagement string                `json:"variant_inventory_management,omitempty"`
+	PriceSet                   AmountSet             `json:"price_set,omitempty"`
 	PreTaxPrice                *decimal.Decimal      `json:"pre_tax_price,omitempty"`
 	Properties                 []NoteAttribute       `json:"properties,omitempty"`
 	ProductExists              bool                  `json:"product_exists,omitempty"`
