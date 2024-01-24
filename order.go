@@ -395,6 +395,7 @@ type RefundLineItem struct {
 	Subtotal    *decimal.Decimal `json:"subtotal,omitempty"`
 	TotalTax    *decimal.Decimal `json:"total_tax,omitempty"`
 	SubTotalSet AmountSet        `json:"subtotal_set,omitempty"`
+	RestockType string           `json:"restock_type"` //return, cancel, no_restock
 }
 
 // List orders
