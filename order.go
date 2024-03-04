@@ -355,6 +355,7 @@ type Transaction struct {
 	Status         string                 `json:"status,omitempty"`
 	Message        string                 `json:"message,omitempty"`
 	CreatedAt      *time.Time             `json:"created_at,omitempty"`
+	ProcessedAt    *time.Time             `json:"processed_at,omitempty"`
 	Test           bool                   `json:"test,omitempty"`
 	Authorization  string                 `json:"authorization,omitempty"`
 	Currency       string                 `json:"currency,omitempty"`
