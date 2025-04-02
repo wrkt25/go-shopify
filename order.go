@@ -344,6 +344,7 @@ type TaxLine struct {
 	Title string           `json:"title,omitempty"`
 	Price *decimal.Decimal `json:"price,omitempty"`
 	Rate  *decimal.Decimal `json:"rate,omitempty"`
+	ChannelLiable bool           `json:"channel_liable,omitempty"`
 }
 
 type Transaction struct {
